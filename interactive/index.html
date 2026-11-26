@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KI-6W Learning Studio — Antigravity + Gemini 6-Wochen-Curriculum</title>
+  <meta name="description" content="Interaktives KI-Lernstudio für Antigravity + Gemini: 24-Lektionen-Tracker, Checkpoints (CP-0 bis CP-3), Prompt-Anatomie-Builder, Token-Visualizer, Agent-Simulator, Human Reviewer Drill, Docs-CI/CD-Konfigurator, 36 Flashcards und Timed Praxis-Test." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Direkt zum Hauptinhalt springen</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-code">KI-6W</span>
+        <div>
+          <span class="brand-title">KI Learning Studio</span>
+          <span class="brand-sub">Antigravity + Gemini &middot; 6-Wochen-Curriculum &amp; Docs-CI/CD</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Hauptbereiche" role="tablist">
+        <button class="nav-btn active" role="tab" aria-selected="true" aria-controls="view-curriculum" data-view="curriculum" id="nav-curriculum">24 Lektionen</button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="view-checkpoints" data-view="checkpoints" id="nav-checkpoints">Checkpoints (CP-0..3)</button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="view-labs" data-view="labs" id="nav-labs">Interaktive Labs</button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="view-flashcards" data-view="flashcards" id="nav-flashcards">Flashcards</button>
+        <button class="nav-btn" role="tab" aria-selected="false" aria-controls="view-mock" data-view="mock" id="nav-mock">Praxis-Test</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-sm btn-secondary" id="beamer-toggle-btn" type="button" aria-pressed="false" title="Größere Schrift für Beamer &amp; Teams Screen-Share">Beamer-Modus</button>
+        <a class="permalink-pill" id="global-permalink" href="#curriculum" title="Permanente URL zu diesem Sprungziel kopieren">&#x1F517; Permalink</a>
+        <a class="docs-link" href="https://ki-schulung.readthedocs.io/de/latest/" target="_blank" rel="noopener">Read the Docs Handbuch &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell" id="main-content">
+    <!-- VIEW 1: 24-LESSON CURRICULUM TRACKER -->
+    <section id="view-curriculum" class="view active" role="tabpanel" aria-labelledby="curriculum-heading">
+      <div class="section-head">
+        <div>
+          <h1 id="curriculum-heading">24-Lektionen-Lernplan (6 Wochen &times; 4 Einheiten)</h1>
+          <p class="lead">Verfolge jede 45-Minuten-Lerneinheit von den Grundlagen (<code>L01</code>) über agentisches Arbeiten mit Antigravity bis zur automatisierten Docs-CI/CD-Pipeline (<code>L24</code>). Dein Fortschritt wird automatisch im Browser gespeichert.</p>
+        </div>
+        <div class="progress-summary" id="lesson-progress-summary">
+          <div class="metric-value"><span id="lessons-done-count">0 / 24</span></div>
+          <div class="metric-label">Lektionen abgeschlossen (<span id="lessons-done-pct">0%</span>)</div>
+          <div class="progress-track"><div class="progress-fill" id="lessons-progress-bar"></div></div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="filter-group">
+          <label for="module-filter">Modul:</label>
+          <select id="module-filter"></select>
+        </div>
+        <div class="filter-group">
+          <label for="lesson-search">Suche:</label>
+          <input type="search" id="lesson-search" placeholder="Prompt, Gemini, Agent, Diff, Pages, RTD..." />
+        </div>
+        <div class="filter-group">
+          <label for="track-select">Lern-Track:</label>
+          <select id="track-select">
+            <option value="A">Track A: Praxis-Basis (Alle, ohne Code-Tiefe)</option>
+            <option value="B">Track B: Technischer Ausblick (Git, Python, Tests &amp; CI/CD)</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" id="export-state-btn" type="button">Lernstand sichern (.json)</button>
+        <button class="btn btn-secondary" id="import-state-btn" type="button">Lernstand laden (.json)</button>
+        <input type="file" id="import-state-file" accept=".json,application/json" hidden />
+        <button class="btn btn-secondary" id="reset-lessons-btn" type="button">Fortschritt zurücksetzen</button>
+      </div>
+
+      <div id="track-banner" role="status" aria-live="polite" class="callout callout-info"></div>
+      <div id="modules-container" class="phases-list"></div>
+    </section>
+
+    <!-- VIEW 2: REPEATING IDENTICAL CHECKPOINTS (CP-0 to CP-3) -->
+    <section id="view-checkpoints" class="view" role="tabpanel" aria-labelledby="checkpoints-heading">
+      <div class="section-head">
+        <div>
+          <h1 id="checkpoints-heading">Identische Fortschritts-Checkpoints (CP-0 bis CP-3)</h1>
+          <p class="lead">Absolviere viermal im Kursverlauf denselben standardisierten Benchmark (15 Fragen + 3 Praxis-Szenarien), um deinen Kompetenzzuwachs objektiv zu messen.</p>
+        </div>
+        <div class="checkpoint-actions">
+          <button class="btn btn-secondary" id="export-cp-md" type="button">Markdown exportieren</button>
+          <button class="btn btn-secondary" id="export-cp-json" type="button">JSON exportieren</button>
+        </div>
+      </div>
+
+      <div class="cp-selector-strip" id="cp-selector-strip"></div>
+
+      <div class="cp-layout">
+        <div class="cp-panel" id="cp-workspace"></div>
+        <aside class="cp-sidebar">
+          <div class="panel-box">
+            <h2>Lernverlauf (CP-0 &rarr; CP-3)</h2>
+            <p class="muted-sm">Gesamtscore (%) und Confidence-Kalibrierung über alle Durchläufe.</p>
+            <div id="cp-chart-container" class="chart-box"></div>
+          </div>
+          <div class="panel-box">
+            <h2>Modul-Kompetenzmatrix</h2>
+            <div id="cp-domain-matrix"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- VIEW 3: INTERACTIVE KI LABS -->
+    <section id="view-labs" class="view" role="tabpanel" aria-labelledby="labs-heading">
+      <div class="section-head">
+        <div>
+          <h1 id="labs-heading">Interaktive KI-Labs &amp; Simulatoren</h1>
+          <p class="lead">Praxisnahe Browser-Werkzeuge für Prompt-Qualität, Token-Verständnis, Agenten-Briefings, kritisches Review und Docs-CI/CD – komplett ohne API-Key nutzbar.</p>
+        </div>
+      </div>
+
+      <div class="lab-tabs" role="tablist" aria-label="Interaktive Labs">
+        <button class="lab-tab-btn active" role="tab" aria-selected="true" data-lab="prompt-builder">Lab A: Prompt-Builder</button>
+        <button class="lab-tab-btn" role="tab" aria-selected="false" data-lab="tokens">Lab B: Token &amp; Kontext</button>
+        <button class="lab-tab-btn" role="tab" aria-selected="false" data-lab="agent-sim">Lab C: Agent-Simulator</button>
+        <button class="lab-tab-btn" role="tab" aria-selected="false" data-lab="reviewer">Lab D: Human Reviewer Drill</button>
+        <button class="lab-tab-btn" role="tab" aria-selected="false" data-lab="cicd-gen">Lab E: Docs-CI/CD-Generator</button>
+      </div>
+
+      <!-- Lab A: Prompt-Anatomie-Builder -->
+      <div class="lab-pane active" id="lab-prompt-builder">
+        <div class="preset-bar">
+          <span>Vorlagen:</span>
+          <button class="btn btn-sm" type="button" data-prompt-preset="meeting">Meeting-Protokoll</button>
+          <button class="btn btn-sm" type="button" data-prompt-preset="policy">Richtlinien-Check</button>
+          <button class="btn btn-sm" type="button" data-prompt-preset="review">Kritiker-Review</button>
+          <button class="btn btn-sm btn-secondary" type="button" id="pb-clear-btn">Felder leeren</button>
+        </div>
+        <div class="lab-grid-2">
+          <div class="form-stack">
+            <div class="form-field">
+              <label for="pb-role">1. Rolle (Perspektive)</label>
+              <input type="text" id="pb-role" placeholder="z. B. Du bist ein erfahrener technischer Redakteur." />
+            </div>
+            <div class="form-field">
+              <label for="pb-context">2. Kontext (Zielgruppe &amp; Hintergrund)</label>
+              <textarea id="pb-context" rows="2" placeholder="z. B. Stichpunkte aus unserem Team-Sync für neue Mitarbeitende."></textarea>
+            </div>
+            <div class="form-field">
+              <label for="pb-task">3. Aufgabe (Konkretes Ziel)</label>
+              <textarea id="pb-task" rows="2" placeholder="z. B. Extrahiere Entscheidungen, Aufgaben und offene Fragen."></textarea>
+            </div>
+            <div class="form-field">
+              <label for="pb-format">4. Format (Ausgabestruktur)</label>
+              <input type="text" id="pb-format" placeholder="z. B. Markdown-Tabelle (Aufgabe | Verantwortlich | Frist)" />
+            </div>
+            <div class="form-field">
+              <label for="pb-constraints">5. Einschränkungen (Grenzen &amp; Faktencheck)</label>
+              <input type="text" id="pb-constraints" placeholder="z. B. Erfinde keine Namen; markiere Fehlendes mit [OFFEN]." />
+            </div>
+          </div>
+          <div class="form-stack">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <span class="score-badge" id="pb-score-badge">Qualitätsscore: 0 / 100</span>
+              <button class="btn btn-primary btn-sm" id="pb-copy-btn" type="button">Prompt kopieren</button>
+            </div>
+            <div id="pb-feedback" class="callout callout-info" style="margin:0;"></div>
+            <div id="pb-privacy-warn" class="callout callout-danger" hidden style="margin:0;"></div>
+            <div class="terminal-box">
+              <div class="terminal-bar">Generierter Struktur-Prompt</div>
+              <pre id="pb-output"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lab B: Token & Kontextfenster Visualizer -->
+      <div class="lab-pane" id="lab-tokens">
+        <div class="preset-bar">
+          <span>Beispiele:</span>
+          <button class="btn btn-sm" type="button" data-token-preset="richtlinie">Richtlinie (Modul 1)</button>
+          <button class="btn btn-sm" type="button" data-token-preset="yaml">GitHub Actions YAML</button>
+          <button class="btn btn-sm" type="button" data-token-preset="prompt">Strukturierter Prompt</button>
+        </div>
+        <div class="lab-grid-2">
+          <div class="form-stack">
+            <div class="form-field">
+              <label for="tok-input">Eingabetext (Deutsch, Englisch oder Code)</label>
+              <textarea id="tok-input" rows="8"></textarea>
+            </div>
+            <div class="callout callout-info" id="tok-stats" style="margin:0;"></div>
+          </div>
+          <div class="form-stack">
+            <strong>Visuelle Token-Zerlegung (Heuristik)</strong>
+            <div id="tok-chips" class="token-chips"></div>
+            <div id="tok-model-advice" class="callout callout-warn" style="margin:0;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lab C: Antigravity Agent Simulator -->
+      <div class="lab-pane" id="lab-agent-sim">
+        <div class="preset-bar">
+          <span>Szenario:</span>
+          <button class="btn btn-sm" type="button" data-agent-preset="docs">Wissensseite erstellen</button>
+          <button class="btn btn-sm" type="button" data-agent-preset="csv">CSV auswerten + Test</button>
+          <button class="btn btn-sm" type="button" data-agent-preset="cicd">CI/CD-Fehler beheben</button>
+        </div>
+        <div class="lab-grid-2">
+          <div class="form-stack">
+            <div class="form-field">
+              <label for="agent-goal">Briefing / Ziel</label>
+              <textarea id="agent-goal" rows="3"></textarea>
+            </div>
+            <div class="form-field">
+              <label for="agent-criteria">Akzeptanzkriterien</label>
+              <textarea id="agent-criteria" rows="3"></textarea>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+              <label><input type="checkbox" id="agent-hitl" checked /> Human-in-the-Loop Review-Pause</label>
+              <button class="btn btn-primary" id="agent-run-btn" type="button">Agent-Ablauf simulieren</button>
+              <button class="btn btn-secondary" id="agent-approve-btn" type="button" hidden>Diff freigeben &amp; abschließen</button>
+            </div>
+          </div>
+          <div class="terminal-box">
+            <div class="terminal-bar">Antigravity Agent Transcript</div>
+            <pre id="agent-output"></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lab D: Human Reviewer Drill -->
+      <div class="lab-pane" id="lab-reviewer">
+        <div class="compiler-head">
+          <div>
+            <h2>Human Reviewer Drill (Ohne KI-Hilfe)</h2>
+            <p class="muted-sm">Prüfe 24 realistische Outputs aus Modulen 1–6 und entscheide, ob sie sicher/korrekt sind, ein Halluzinations-/Datenschutzrisiko enthalten oder einen Syntax-/Pipeline-Fehler haben.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <select id="reviewer-filter-select" aria-label="Reviewer Filter">
+              <option value="ALL">Alle 24 Snippets (M1–M6)</option>
+              <option value="hallucination">Faktencheck &amp; Halluzinationen</option>
+              <option value="privacy">Datenschutz &amp; Prompt-Risiken</option>
+              <option value="agent">Agenten-Diffs &amp; Tests</option>
+              <option value="cicd">GitHub Actions &amp; Read the Docs</option>
+            </select>
+            <div class="compiler-score">Punkte: <strong id="reviewer-score-val">0 / 0</strong></div>
+          </div>
+        </div>
+        <div id="reviewer-list" class="compiler-list"></div>
+      </div>
+
+      <!-- Lab E: Docs CI/CD Generator -->
+      <div class="lab-pane" id="lab-cicd-gen">
+        <div class="callout callout-info">
+          <strong>Docs-as-Code Konfigurator:</strong> Wähle dein Dokumentations-Tool und Ziel-Hosting. Das Studio generiert passende Vorlagen für <strong>GitHub Actions</strong>, <strong>GitHub Pages</strong> und <strong>Read the Docs</strong>.
+        </div>
+        <div class="toolbar">
+          <div class="filter-group">
+            <label for="cicd-tool">Docs-Tool:</label>
+            <select id="cicd-tool">
+              <option value="mkdocs">MkDocs Material</option>
+              <option value="html">Plain HTML / Statisch</option>
+              <option value="sphinx">Sphinx (reST / MyST)</option>
+              <option value="docusaurus">Docusaurus (Node.js)</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="cicd-target">Ziel:</label>
+            <select id="cicd-target">
+              <option value="dual">Dual: GitHub Pages + Read the Docs</option>
+              <option value="ghp">Nur GitHub Pages</option>
+              <option value="rtd">Nur Read the Docs</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="cicd-branch">Branch:</label>
+            <input type="text" id="cicd-branch" value="main" style="width:100px;" />
+          </div>
+          <label><input type="checkbox" id="cicd-lychee" checked /> PR Link-Check (lychee)</label>
+        </div>
+        <div class="lab-grid-2">
+          <div class="form-stack">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong id="cicd-primary-title">.github/workflows/pages.yml</strong>
+              <div style="display:flex;gap:0.4rem;">
+                <button class="btn btn-sm btn-secondary" id="cicd-copy-1" type="button">Kopieren</button>
+                <button class="btn btn-sm btn-secondary" id="cicd-dl-1" type="button">Download</button>
+              </div>
+            </div>
+            <div class="terminal-box">
+              <div class="terminal-bar" id="cicd-bar-1">GitHub Actions Workflow</div>
+              <pre id="cicd-out-1"></pre>
+            </div>
+          </div>
+          <div class="form-stack">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong id="cicd-secondary-title">.readthedocs.yaml</strong>
+              <div style="display:flex;gap:0.4rem;">
+                <button class="btn btn-sm btn-secondary" id="cicd-copy-2" type="button">Kopieren</button>
+                <button class="btn btn-sm btn-secondary" id="cicd-dl-2" type="button">Download</button>
+              </div>
+            </div>
+            <div class="terminal-box">
+              <div class="terminal-bar" id="cicd-bar-2">Read the Docs Config</div>
+              <pre id="cicd-out-2"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: FLASHCARDS -->
+    <section id="view-flashcards" class="view" role="tabpanel" aria-labelledby="flashcards-heading">
+      <div class="section-head">
+        <div>
+          <h1 id="flashcards-heading">KI-Konzept- &amp; Praxis-Flashcards</h1>
+          <p class="lead">36 kompakte Active-Recall-Lernkarten für das 5-minütige Warm-up zu Beginn jeder Lektion.</p>
+        </div>
+        <div class="filter-group">
+          <label for="fc-domain-filter">Modul:</label>
+          <select id="fc-domain-filter"></select>
+          <button class="btn btn-secondary" id="fc-shuffle-btn" type="button">Mischen</button>
+        </div>
+      </div>
+
+      <div class="flashcard-stage">
+        <div class="flashcard" id="flashcard-card" tabindex="0" role="button" aria-label="Flashcard umdrehen">
+          <div class="fc-meta">
+            <span id="fc-domain-tag"></span>
+            <span id="fc-counter"></span>
+          </div>
+          <div class="fc-body" id="fc-body"></div>
+          <div class="fc-hint">Karte anklicken oder <kbd>Leertaste</kbd> drücken zum Umdrehen (&larr;/&rarr; zum Blättern)</div>
+        </div>
+        <div class="fc-controls">
+          <button class="btn btn-secondary" id="fc-prev-btn" type="button">&larr; Zurück</button>
+          <button class="btn btn-primary" id="fc-flip-btn" type="button">Karte umdrehen</button>
+          <button class="btn btn-secondary" id="fc-next-btn" type="button">Weiter &rarr;</button>
+          <button class="btn btn-teal" id="fc-known-btn" type="button">Als gewusst markieren</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: TIMED PRAXIS-TEST -->
+    <section id="view-mock" class="view" role="tabpanel" aria-labelledby="mock-heading">
+      <div class="section-head">
+        <div>
+          <h1 id="mock-heading">Timed Praxis-Assessment (30 Fragen)</h1>
+          <p class="lead">30 praxisnahe Fragen über alle 6 Module in 45 Minuten (Bestehensgrenze: 70 % / 21 richtig, Ziel für volle Praxisreife: &ge; 80 %).</p>
+        </div>
+      </div>
+      <div id="mock-root"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>KI-Schulung (Antigravity + Gemini) &middot; GitHub Pages Lernstudio</span>
+      <span>Vertiefende Theorie &amp; Übungsmaterialien im <a href="https://ki-schulung.readthedocs.io/de/latest/" target="_blank" rel="noopener">Read the Docs Kurshandbuch &nearr;</a></span>
+    </div>
+  </footer>
+
+  <script src="js/data-curriculum.js"></script>
+  <script src="js/data-checkpoints.js"></script>
+  <script src="js/data-labs.js"></script>
+  <script src="js/data-flashcards.js"></script>
+  <script src="js/data-mock.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

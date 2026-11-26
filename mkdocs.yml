@@ -1,5 +1,5 @@
 site_name: KI-Schulung (Antigravity + Gemini)
-site_url: https://chatelao.github.io/ki-schulung/
+site_url: https://ki-schulung.readthedocs.io/de/latest/
 site_description: 6-Wochen-Lernplan zum Erlernen von KI mit Antigravity, Gemini und Docs-CI/CD
 repo_url: https://github.com/chatelao/ki-schulung
 repo_name: chatelao/ki-schulung
@@ -25,6 +25,7 @@ markdown_extensions:
 
 nav:
   - Startseite: index.md
+  - "Interaktives Lernstudio (GH Pages)": https://chatelao.github.io/ki-schulung/
   - Lernplan: lernplan.md
   - Module:
       - "1. Grundlagen KI & Gemini": module/01-grundlagen-ki-gemini/README.md

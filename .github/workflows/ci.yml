@@ -1,0 +1,45 @@
+name: Quality Gate (MkDocs Strict, Python Tests, Studio JS & Links)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install MkDocs dependencies
+        run: pip install --no-cache-dir mkdocs mkdocs-material
+
+      - name: Verify MkDocs strict build (Read the Docs handbook)
+        run: |
+          python3 scripts/prepare_docs.py
+          mkdocs build --strict -d /tmp/mkdocs-site
+
+      - name: Verify Module 4 Python unit tests
+        run: python3 -m unittest discover -s module/04-praxis-workflows/material -p "test_*.py" -v
+
+      - name: Verify Interactive Studio JS syntax
+        run: node --check interactive/js/*.js
+
+      - name: Verify Studio data integrity and RTD deep links
+        run: python3 scripts/check_studio.py

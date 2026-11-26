@@ -1,10 +1,15 @@
 # KI-Schulung: Arbeiten mit Antigravity + Gemini
 
-[![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fchatelao.github.io%2Fki-schulung%2F&label=GitHub%20Pages&logo=github)](https://chatelao.github.io/ki-schulung/)
-[![Read the Docs](https://readthedocs.org/projects/ki-schulung/badge/?version=latest)](https://ki-schulung.readthedocs.io/de/latest/?badge=latest)
+[![Interaktives Lernstudio (GitHub Pages)](https://img.shields.io/website?url=https%3A%2F%2Fchatelao.github.io%2Fki-schulung%2F&label=Lernstudio%20(GH%20Pages)&logo=github)](https://chatelao.github.io/ki-schulung/)
+[![Kurshandbuch (Read the Docs)](https://readthedocs.org/projects/ki-schulung/badge/?version=latest)](https://ki-schulung.readthedocs.io/de/latest/?badge=latest)
 
 Willkommen im Schulungs-Repository **ki-schulung**.  
 Dieses Curriculum führt gemischte Gruppen (**Einsteiger bis Fortgeschrittene**) praxisnah von den Grundlagen generativer KI mit **Gemini** über agentisches Arbeiten mit **Antigravity** bis hin zu automatisierten Dokumentations-Pipelines (**GitHub Actions, GitHub Pages & Read the Docs**).
+
+## Zwei Plattformen, zwei Aufgaben
+
+- **[Interaktives KI-Lernstudio (GitHub Pages)](https://chatelao.github.io/ki-schulung/):** 24-Lektionen-Tracker, Checkpoints (CP-0..CP-3), 5 interaktive KI-Labs (Prompt-Builder, Token-Visualizer, Agent-Simulator, Human Reviewer Drill, Docs-CI/CD-Generator), 36 Flashcards & Timed Praxis-Test.
+- **[Vollständiges Kurshandbuch (Read the Docs)](https://ki-schulung.readthedocs.io/de/latest/):** Ausführliche Theorie-Module 1–6, Schritt-für-Schritt-Übungen, Vorlagen und CI/CD-Referenzmaterialien.
 
 ## Überblick
 
