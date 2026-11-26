@@ -1,0 +1,64 @@
+# Beispiel-Workflow: Automatischer Build & Deployment auf GitHub Pages
+# Aktivierung: Datei nach .github/workflows/pages.yml kopieren
+# und in GitHub unter Settings -> Pages -> Source auf "GitHub Actions" stellen.
+
+name: Build and Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Minimal notwendige Berechtigungen für das GitHub Pages Deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Verhindert konkurrierende Deployments (laufendes Deployment wird nicht abgebrochen)
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: GitHub Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      # Tool-agnostischer Build-Schritt:
+      # Passe diesen Schritt an dein gewähltes Dokumentations-Tool an.
+      - name: Dokumentation bauen (Beispiel)
+        run: |
+          mkdir -p _site
+          # Beispiel A (plain HTML/Statisch):
+          # cp -r docs/* _site/
+          #
+          # Beispiel B (MkDocs):
+          # pip install mkdocs mkdocs-material && mkdocs build -d _site
+          #
+          # Beispiel C (Sphinx):
+          # pip install sphinx && sphinx-build -b html docs _site
+          #
+          # Minimaler Platzhalter für den ersten Funktionstest:
+          echo "<h1>KI-Schulung Docs</h1><p>Automatisch gebaut mit GitHub Actions.</p>" > _site/index.html
+
+      - name: Pages-Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4

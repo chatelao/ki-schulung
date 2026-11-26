@@ -1,0 +1,30 @@
+# Beispiel-Konfiguration für Read the Docs (Version 2)
+# Aktivierung: Datei als .readthedocs.yaml ins Hauptverzeichnis des Repositories kopieren
+# und das Repository auf https://app.readthedocs.org/ importieren.
+
+version: 2
+
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.12"
+
+  # Tool-agnostische Variante mit eigenen Build-Befehlen (funktioniert mit jedem Static-Site-Generator):
+  # Das Ergebnis muss in das Verzeichnis $READTHEDOCS_OUTPUT/html geschrieben werden.
+  commands:
+    - mkdir -p "$READTHEDOCS_OUTPUT/html"
+    - echo "<h1>KI-Schulung auf Read the Docs</h1><p>Automatisch gebaut via .readthedocs.yaml.</p>" > "$READTHEDOCS_OUTPUT/html/index.html"
+
+# --- Alternative 1: MkDocs (einkommentieren & `commands` oben entfernen) ---
+# mkdocs:
+#   configuration: mkdocs.yml
+# python:
+#   install:
+#     - requirements: docs/requirements.txt
+
+# --- Alternative 2: Sphinx (einkommentieren & `commands` oben entfernen) ---
+# sphinx:
+#   configuration: docs/conf.py
+# python:
+#   install:
+#     - requirements: docs/requirements.txt
