@@ -1,5 +1,8 @@
 # KI-Schulung: Arbeiten mit Antigravity + Gemini
 
+[![GitHub Pages](https://img.shields.io/website?url=https%3A%2F%2Fchatelao.github.io%2Fki-schulung%2F&label=GitHub%20Pages&logo=github)](https://chatelao.github.io/ki-schulung/)
+[![Read the Docs](https://readthedocs.org/projects/ki-schulung/badge/?version=latest)](https://ki-schulung.readthedocs.io/en/latest/?badge=latest)
+
 Willkommen im Schulungs-Repository **ki-schulung**.  
 Dieses Curriculum führt gemischte Gruppen (**Einsteiger bis Fortgeschrittene**) praxisnah von den Grundlagen generativer KI mit **Gemini** über agentisches Arbeiten mit **Antigravity** bis hin zu automatisierten Dokumentations-Pipelines (**GitHub Actions, GitHub Pages & Read the Docs**).
 
