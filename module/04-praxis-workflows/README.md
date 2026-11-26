@@ -1,23 +1,39 @@
 # Modul 4: Praxis-Workflows, Automatisierung & Multimodalität
 
 - **Zeitbedarf:** ca. 3–4 Std. (Woche 4)
+- **Übung:** [`uebung.md`](./uebung.md)
+- **Beispieldaten & Referenz-Skript:** [`material/beispiel-daten.csv`](./material/beispiel-daten.csv), [`material/auswertung_beispiel.py`](./material/auswertung_beispiel.py)
+
+---
 
 ## Lernziele
-- Wiederkehrende Aufgaben aus Wissensarbeit und Alltag mit Antigravity + Gemini automatisieren.
-- Multimodale Eingaben (Screenshots, Skizzen, Fehlermeldungen) gezielt in Lösungen übersetzen.
-- Einfache Qualitätsprüfungen und Debugging-Schritte gemeinsam mit dem Agenten durchführen.
+- Wiederkehrende Aufgaben aus **Wissensarbeit, Dokumentation und Datenaufbereitung** mit Antigravity + Gemini automatisieren.
+- Kleine Hilfstools und interaktive HTML-Prototypen bauen – auch ohne tiefe Programmierkenntnisse.
+- **Multimodale Eingaben** (Screenshots, Handskizzen, Fehlermeldungen) direkt als Arbeitsgrundlage nutzen.
+- Ergebnisse durch Plausibilitätschecks und einfache automatisierte Tests absichern.
 
-## Themen
-1. **Wissensarbeit & Visualisierung** – Strukturierte Berichte, Entscheidungsmatrizen, Mermaid-Diagramme.
-2. **Kleine Tools & Prototypen** – CSV/JSON-Auswertungen, kleine Hilfsskripte oder interaktive HTML-Prototypen (auch ohne tiefe Programmierkenntnisse).
-3. **Multimodale Workflows** – Screenshots oder Skizzen als Vorlage nutzen und schrittweise verfeinern.
-4. **Qualitätssicherung** – Plausibilitätschecks, Fehlersuche und reproduzierbare Tests.
+---
 
-## Übungen
-- **Basis-Übung:** Ein reales Alltagsproblem (z. B. Datentabelle aufbereiten, interaktive Checkliste bauen oder Bericht generieren) mit Antigravity umsetzen.
-- **Technischer Ausblick:** Automatisierte Tests (Unit- oder Smoke-Tests) für das erstellte Skript bzw. Tool generieren und ausführen lassen.
+## 1. Wissensarbeit & Visualisierung
+Typische Einsatzfelder ohne Code-Tiefe:
+- **Entscheidungsmatrizen & Vergleiche:** Optionen mit Kriterien gewichten und als Tabelle darstellen.
+- **Ablauf- & Architekturdiagramme:** Mit **Mermaid** (`flowchart`, `sequenceDiagram`) komplexe Prozesse direkt in Markdown visualisieren.
+
+## 2. Kleine Tools & Prototypen („Vibe Coding“ mit Kontrolle)
+- **Datenaufbereitung:** CSV/JSON-Dateien bereinigen, zusammenfassen, Berichte generieren (siehe [`material/auswertung_beispiel.py`](./material/auswertung_beispiel.py)).
+- **Interaktive HTML-Werkzeuge:** Checklisten, Rechner oder kleine Dashboards als einzelne HTML-Datei bauen lassen.
+
+## 3. Multimodale Workflows
+- **Screenshot → Verbesserung:** Screenshot einer unübersichtlichen Seite oder Fehlermeldung übergeben und gezielt Verbesserungen anfordern.
+- **Skizze → Prototyp:** Foto eines Whiteboard-Entwurfs als Vorlage für eine HTML-Oberfläche oder ein Diagramm nutzen.
+
+## 4. Qualitätssicherung & Debugging
+- **Plausibilitätscheck:** Stimmen Summen, Einheiten und Randfälle (z. B. leere Zeilen)?
+- **Reproduzierbare Tests:** Selbst kleine Hilfsskripte profitieren von 2–3 automatisierten Tests (siehe [`material/test_auswertung_beispiel.py`](./material/test_auswertung_beispiel.py)).
+
+---
 
 ## Checkliste
-- [ ] Mindestens ein eigenes Alltagsproblem mit Antigravity gelöst
-- [ ] Ein Diagramm oder einen interaktiven Prototyp erzeugt
-- [ ] Ergebnis gegen eigene Akzeptanzkriterien getestet
+- [ ] Mindestens ein reales Alltagsproblem mit Antigravity automatisiert oder prototypisch gelöst
+- [ ] Plausibilität der Ausgabe anhand von Stichproben geprüft
+- [ ] Übung in [`uebung.md`](./uebung.md) abgeschlossen

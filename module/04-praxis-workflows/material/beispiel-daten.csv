@@ -1,0 +1,13 @@
+modul,teilnehmer_id,bewertung_1_bis_5,zeitaufwand_min,kommentar
+Modul 1,T01,5,170,Sehr verständlicher Einstieg
+Modul 1,T02,4,185,Gute Beispiele zum Faktencheck
+Modul 1,T03,5,165,Datenschutz-Teil war hilfreich
+Modul 2,T01,4,190,Prompt-Vorlage direkt im Alltag genutzt
+Modul 2,T02,5,180,Kritiker-Prompt war ein Aha-Erlebnis
+Modul 2,T03,4,195,Mehr Beispiele für Tabellen wären gut
+Modul 3,T01,5,210,Erster Agenten-Workflow lief reibungslos
+Modul 3,T02,3,230,Diff-Review brauchte etwas Eingewöhnung
+Modul 3,T03,4,205,Klare Briefing-Struktur hilft enorm
+Modul 4,T01,5,220,CSV-Auswertung in Minuten erledigt
+Modul 4,T02,5,200,HTML-Prototyp hat Team überzeugt
+Modul 4,T03,4,215,Tests sind für Nicht-Entwickler super erklärt

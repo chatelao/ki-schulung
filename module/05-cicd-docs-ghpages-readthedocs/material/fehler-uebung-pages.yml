@@ -1,0 +1,38 @@
+# Übungsdatei für Modul 5: Dieser Workflow enthält 3 absichtliche Fehler!
+# Aufgabe: Finde sie gemeinsam mit Antigravity und vergleiche mit loesung-fehler-uebung.md.
+
+name: Defekter Docs Workflow
+
+on:
+  push:
+    # Fehler 1: Falscher oder nicht existierender Branch-Name (je nach Repo meist "main")
+    branches: ["master-nicht-vorhanden"]
+
+# Fehler 2: Fehlende Berechtigungen für GitHub Pages (pages: write und id-token: write fehlen)
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Dokumentation bauen
+        run: |
+          mkdir -p _site
+          echo "<h1>Test</h1>" > _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          # Fehler 3: Artefakt-Pfad passt nicht zum Build-Ordner "_site"
+          path: "build_output_falsch"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

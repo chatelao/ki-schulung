@@ -27,3 +27,7 @@ Den gesamten Lehrplan mit Lernpfad-Diagramm, Zeitangaben und Erfolgskriterien fi
 
 - **CI/CD-Beispiele (GitHub Actions, GitHub Pages & Read the Docs):** [`examples/ci-cd-docs/`](./examples/ci-cd-docs/README.md)
 - **Prompt- & Briefing-Vorlage:** [`vorlagen/prompt-template.md`](./vorlagen/prompt-template.md)
+- **Best-Practices-Checkliste:** [`vorlagen/best-practices-checkliste.md`](./vorlagen/best-practices-checkliste.md)
+- **Abschlussprojekt-Vorlage:** [`vorlagen/abschlussprojekt-vorlage.md`](./vorlagen/abschlussprojekt-vorlage.md)
+
+> Alle Module enthalten neben dem Leitfaden (`README.md`) eine konkrete Schritt-für-Schritt-Übung (`uebung.md`) sowie passende Beispiel- und Testmaterialien im jeweiligen `material/`-Ordner.
