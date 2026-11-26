@@ -1,0 +1,46 @@
+site_name: KI-Schulung (Antigravity + Gemini)
+site_description: 6-Wochen-Lernplan zum Erlernen von KI mit Antigravity, Gemini und Docs-CI/CD
+repo_url: https://github.com/chatelao/ki-schulung
+repo_name: chatelao/ki-schulung
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Startseite: index.md
+  - Lernplan: lernplan.md
+  - Module:
+      - "1. Grundlagen KI & Gemini": module/01-grundlagen-ki-gemini/README.md
+      - "1. Übung": module/01-grundlagen-ki-gemini/uebung.md
+      - "2. Prompt Engineering": module/02-prompt-engineering/README.md
+      - "2. Übung": module/02-prompt-engineering/uebung.md
+      - "3. Antigravity Einstieg": module/03-antigravity-einstieg/README.md
+      - "3. Übung": module/03-antigravity-einstieg/uebung.md
+      - "4. Praxis-Workflows": module/04-praxis-workflows/README.md
+      - "4. Übung": module/04-praxis-workflows/uebung.md
+      - "5. CI/CD für Docs (GH Pages & RTD)": module/05-cicd-docs-ghpages-readthedocs/README.md
+      - "5. Übung": module/05-cicd-docs-ghpages-readthedocs/uebung.md
+      - "6. Fortgeschrittene Agenten & Capstone": module/06-fortgeschrittene-agenten-abschlussprojekt/README.md
+      - "6. Übung": module/06-fortgeschrittene-agenten-abschlussprojekt/uebung.md
+  - Vorlagen:
+      - Prompt- & Briefing-Vorlage: vorlagen/prompt-template.md
+      - Best-Practices-Checkliste: vorlagen/best-practices-checkliste.md
+      - Abschlussprojekt-Vorlage: vorlagen/abschlussprojekt-vorlage.md
+  - CI/CD-Beispiele:
+      - Übersicht: examples/ci-cd-docs/README.md
